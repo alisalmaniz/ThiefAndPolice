@@ -16,6 +16,8 @@ public class ThiefAndPolice {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Police police1 = new Police();
+        
     }
     
 }
