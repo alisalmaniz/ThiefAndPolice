@@ -9,6 +9,6 @@ package thiefandpolice;
  *
  * @author Ali salmani
  */
-public class Thief {
+public class Thief extends Man {
     
 }
