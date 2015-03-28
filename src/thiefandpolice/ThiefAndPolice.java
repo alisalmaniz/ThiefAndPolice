@@ -5,8 +5,6 @@
  */
 package thiefandpolice;
 
-import java.awt.Graphics;
-
 /**
  *
  * @author Ali salmani
@@ -19,16 +17,25 @@ public class ThiefAndPolice {
     public static void main(String[] args) {
         // TODO code application logic here
         
+
         Data data= new Data();
         
-        data.xElement();
-        data.yElement();
-        data.policeNumbers();
+        int x = data.getXElement();
+        int y = data.getYElement();
+        int pn = data.policeNumbers();
         data.makeMatrix();
         data.print();
         
+        Police police = new Police(pn, x, y, data.getCharArray());
+        Thief thief = new Thief(pn, x, y, data.getCharArray());
         
-        Man man = new Man();
+        police.watch(data.makeMatrix());
+        thief.watch(data.makeMatrix());
+        
+        data.move(police.watch(data.changedList()), thief.watch(data.changedList()));
+        data.print();
+                
+    
     }
     
 }
