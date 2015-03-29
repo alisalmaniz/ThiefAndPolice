@@ -27,15 +27,15 @@ public class Police extends Data{
         how = new int[2];
         xElement=0;
         yElement=0;
+ 
     }
     //public void p(){System.out.println(pn);}
     public int[] watch(LinkedList listPAndD){
-        
+
         int i=0;
         int j=0;
         int k=0;
-        
-        
+
         search:
         for( k=0; k<listPAndD.size()-2-1; k=k+2){
             
@@ -59,6 +59,7 @@ public class Police extends Data{
             how[0]=i;
             how[1]=j;
         }
+        
         return how;
     }
     

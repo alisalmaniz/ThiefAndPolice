@@ -5,6 +5,7 @@
  */
 package thiefandpolice;
 
+import java.util.LinkedList;
 /**
  *
  * @author Ali salmani
@@ -23,14 +24,17 @@ public class ThiefAndPolice {
         int x = data.getXElement();
         int y = data.getYElement();
         int pn = data.policeNumbers();
-        data.makeMatrix();
+        LinkedList listPAndD = data.makeMatrix();
         data.print();
         
         Police police = new Police(pn, x, y, data.getCharArray());
         Thief thief = new Thief(pn, x, y, data.getCharArray());
+
+        police.watch(listPAndD);
+        thief.watch(listPAndD);
         
-        police.watch(data.makeMatrix());
-        thief.watch(data.makeMatrix());
+        System.out.println("*");
+        //System.out.println(data.changedList());
         
         while(true){
             data.move(police.watch(data.changedList()), thief.watch(data.changedList()));

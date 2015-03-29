@@ -25,13 +25,14 @@ public class Thief extends Data {
     }
     // public void p(){System.out.println(pn);}
     public LinkedList watch(LinkedList listPAndD){
-
+        
+        listPNearD = new LinkedList();
         int i=0;
         int j=0;
         
         int xElement =(int)listPAndD.get(listPAndD.size()-2);
         int yElement =(int)listPAndD.get(listPAndD.size()-1);
-        
+
         for( i=xElement-2; i<=xElement+2; i++)
             for( j=yElement-2; j<=yElement+2; j++){
                 if(i==xElement && j==yElement)

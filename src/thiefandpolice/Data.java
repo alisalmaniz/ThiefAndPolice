@@ -83,6 +83,7 @@ public class Data {
                 break;
             }
         }
+
         return listPAndD;
     }
     
@@ -94,12 +95,41 @@ public class Data {
               
             System.out.println("");
         }
+        System.out.println("");
+    }
+    
+    public LinkedList changedList(){
+        
+
+
+        int k=0;
+        for(int i=0; i<x; i++ )
+            for(int j=0; j<y; j++)
+                if(charArray[i][j]=='P'){
+                    listPAndD.set(k, i);
+                    k++;
+                    listPAndD.set(k, j);
+                    k++;
+                }
+        
+
+        for(int i=0; i<x; i++ )
+            for(int j=0; j<y; j++)
+                if(charArray[i][j]=='D'){
+                    listPAndD.set(k, i);
+                    k++;
+                    listPAndD.set(k, j);
+                }
+                
+
+        return listPAndD;
     }
     
     public void move(int[] how, LinkedList listPNearD){
+
         
         // move of polices
-        
+    /*    
         if(how[0]==-1){
             
             int i=0;
@@ -116,9 +146,9 @@ public class Data {
                        
                         r1=r.nextInt(3);
                         r2=r.nextInt(3); 
-                        if(xP+r1-1>0 && xP+r1-1<x && yP+r2-1>0 && yP+r2-1<y && charArray[xP+r1-1][yP+r2-1]!='p'){
+                        if(xP+r1-1>0 && xP+r1-1<x && yP+r2-1>0 && yP+r2-1<y && charArray[xP+r1-1][yP+r2-1]!='P'){
 
-                            charArray[xP+r1-1][yP+r2-1]='p';
+                            charArray[xP+r1-1][yP+r2-1]='P';
                             charArray[xP][yP]='-';
                             break;
                         }
@@ -128,85 +158,137 @@ public class Data {
         }
         else{
             int dx=(int)listPAndD.get(listPAndD.size()-2);
-            int dy=(int)listPAndD.get(listPAndD.size()-1);
+            int dy=(int)listPAndD.get(listPAndD.size()-1);            
             for(int k=0; k<Math.max(Math.max(dx, x-1-dx), Math.max(dy, y-1-dy)); k++){
                 for(int i=0; i<x; i++ )
                     for(int j=0; j<y; j++)
                         if(charArray[i][j]=='P'){
 
                             if( i<dx && j<dy ){
-                                if( charArray[i+1][j+1]!='P' )
+                                if( charArray[i+1][j+1]!='P' ){
                                     charArray[i+1][j+1]='r';
-                                else if(charArray[i+1][j]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i+1][j]!='P' ){
                                     charArray[i+1][j]='r';
-                                else if(charArray[i][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i][j+1]!='P' ){
                                     charArray[i][j+1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i<dx && j==dy ){
-                                if(charArray[i+1][j]!='P' )
+                                if(charArray[i+1][j]!='P' ){
                                     charArray[i+1][j]='r';
-                                else if(charArray[i+1][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i+1][j+1]!='P' ){
                                     charArray[i+1][j+1]='r';
-                                else if(charArray[i+1][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                    }
+                                else if(charArray[i+1][j-1]!='P' ){
                                     charArray[i+1][j-1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i<dx && j>dy ){
-                                if(charArray[i+1][j-1]!='P' )
+                                if(charArray[i+1][j-1]!='P' ){
                                     charArray[i+1][j-1]='r';
-                                else if(charArray[i+1][j]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i+1][j]!='P' ){
                                     charArray[i+1][j]='r';
-                                else if(charArray[i][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i][j-1]!='P' ){
                                     charArray[i][j-1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i==dx && j<dy ){
-                                if(charArray[i][j+1]!='P' )
+                                if(charArray[i][j+1]!='P' ){
                                     charArray[i][j+1]='r';
-                                else if(charArray[i+1][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i+1][j+1]!='P' ){
                                     charArray[i+1][j+1]='r';
-                                else if(charArray[i-1][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j+1]!='P' ){
                                     charArray[i-1][j+1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i==dx && j>dy ){
-                                if(charArray[i][j-1]!='P' )
+                                if(charArray[i][j-1]!='P' ){
                                     charArray[i][j-1]='r';
-                                else if(charArray[i+1][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i+1][j-1]!='P' ){
                                     charArray[i+1][j-1]='r';
-                                else if(charArray[i-1][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j-1]!='P' ){
                                     charArray[i-1][j-1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i>dx && j<dy ){
-                                if(charArray[i-1][j+1]!='P' )
+                                if(charArray[i-1][j+1]!='P' ){
                                     charArray[i-1][j+1]='r';
-                                else if(charArray[i][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i][j+1]!='P' ){
                                     charArray[i][j+1]='r';
-                                else if(charArray[i-1][j]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j]!='P' ){
                                     charArray[i-1][j]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i<dx && j==dy ){
-                                if(charArray[i-1][j]!='P' )
+                                if(charArray[i-1][j]!='P' ){
                                     charArray[i-1][j]='r';
-                                else if(charArray[i-1][j+1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j+1]!='P' ){
                                     charArray[i-1][j+1]='r';
-                                else if(charArray[i-1][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j-1]!='P' ){
                                     charArray[i-1][j-1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                             else if( i<dx && j>dy ){
-                                if(charArray[i-1][j-1]!='P' )
+                                if(charArray[i-1][j-1]!='P') {
                                     charArray[i-1][j-1]='r';
-                                else if(charArray[i][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i][j-1]!='P' ){
                                     charArray[i][j-1]='r';
-                                else if(charArray[i-1][j-1]!='P' )
+                                    charArray[i][j]='-';
+                                }
+                                else if(charArray[i-1][j-1]!='P' ){
                                     charArray[i-1][j-1]='r';
+                                    charArray[i][j]='-';
+                                }
                             }
                         }
             }
             for(int i=0; i<x; i++ )
                     for(int j=0; j<y; j++)
                         if(charArray[i][j]=='r')
-                            charArray[i][j]='p';
+                            charArray[i][j]='P';
         }
-        
+    */    
         //move of thief
+        
+        System.out.println(listPAndD);
+        System.out.print(listPNearD);
+        System.out.println(listPNearD.size());
         
         if(listPNearD.size()==0){
             
@@ -217,16 +299,16 @@ public class Data {
             int yD;
             Random r= new Random();
                     
-            xD=(int)listPAndD.get(i);
-            yD=(int)listPAndD.get(i+1);
+            xD=(int)listPAndD.get(listPAndD.size()-2);
+            yD=(int)listPAndD.get(listPAndD.size()-1);
             for(int j=0;j<100;j++){
 
                 r1=r.nextInt(3);
                 r2=r.nextInt(3); 
-                if(xD+r1-1>0 && xD+r1-1<x && yD+r2-1>0 && yD+r2-1<y){
+                if(xD+r1-1>=0 && xD+r1-1<x && yD+r2-1>=0 && yD+r2-1<y){
 
-                    charArray[xD+r1-1][yD+r2-1]='D';
                     charArray[xD][yD]='-';
+                    charArray[xD+r1-1][yD+r2-1]='D';
                     break;
                 }
             }
@@ -241,18 +323,18 @@ public class Data {
             int ur=0;
             int rr=0;
             int dr=0;
-            int xP=0;
-            int yP=0;
-            int xD=0;
-            int yD=0;
+            int xP;
+            int yP;
+            int xD;
+            int yD;
             
             xD=(int)listPAndD.get(listPAndD.size()-2);
             yD=(int)listPAndD.get(listPAndD.size()-1);
             
             for(int i=0; i<listPNearD.size(); i=i+2){
                 
-                xP=(int)listPAndD.get(i);
-                yP=(int)listPAndD.get(i+1);
+                xP=(int)listPNearD.get(i);
+                yP=(int)listPNearD.get(i+1);
                 
                 if(xP<xD && yP<yD )
                     ul++;
@@ -271,7 +353,7 @@ public class Data {
                 else if(xP>xD && yP>yD)
                     dr++;
             }
-            if(ul>uu && ul>ur && ul>ll && ul>rr && ul>dl && ul> dd && ul>dr){
+            if(dr<=uu && dr<=ur && dr<=ll && dr<=rr && dr<=dl && dr<=dd && dr<=ul){
                 if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
@@ -284,23 +366,23 @@ public class Data {
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 &&charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 &&charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -309,7 +391,7 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(uu>ul && uu>ur && uu>ll && uu>rr && uu>dl && uu> dd && uu>dr){
+            else if(dd<=ul && dd<=ur && dd<=ll && dd<=rr && dd<=dl && dd<=uu && dd<=dr){
                 if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
@@ -322,7 +404,7 @@ public class Data {
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -330,15 +412,15 @@ public class Data {
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
@@ -347,12 +429,12 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(ur>uu && ur>ul && ur>ll && ur>rr && ur>dl && ur> dd && ur>dr){
-                if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+            else if(dl<=uu && dl<=ul && dl<=ll && dl<=rr && dl<=ur && dl<=dd && dl<=dr){
+                if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -360,7 +442,7 @@ public class Data {
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -368,7 +450,7 @@ public class Data {
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
@@ -376,7 +458,7 @@ public class Data {
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -385,12 +467,12 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(ll>uu && ll>ur && ll>ul && ll>rr && ll>dl && ll> dd && ll>dr){
+            else if(rr<=uu && rr<=ur && rr<=ul && rr<=ll && rr<=dl && rr<=dd && rr<=dr){
                 if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -398,23 +480,23 @@ public class Data {
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
-                    charArray[xD-1][yD+1]='D';
+                    charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -423,16 +505,16 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(rr>uu && rr>ur && rr>ll && rr>ul && rr>dl && rr> dd && rr>dr){
+            else if(ll<=uu && ll<=ur && ll<=rr && ll<=ul && ll<=dl && ll<=dd && ll<=dr){
                 if(yD-1>0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -440,11 +522,11 @@ public class Data {
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -461,7 +543,7 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(dl>uu && dl>ur && dl>ll && dl>rr && dl>ul && dl> dd && dl>dr){
+            else if(ur<=uu && ur<=dl && ur<=ll && ur<=rr && ur<=ul && ur<=dd && ur<=dr){
                 if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
@@ -470,7 +552,7 @@ public class Data {
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD*-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
@@ -478,7 +560,7 @@ public class Data {
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -486,11 +568,11 @@ public class Data {
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -499,20 +581,20 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(dd>uu && dd>ur && dd>ll && dd>rr && dd>dl && dd> ul && dd>dr){
-                if(xD-1>0 && charArray[xD-1][yD]=='-'){
+            else if(uu<=dd && uu<=ur && uu<=ll && uu<=rr && uu<=dl && uu<=ul && uu<=dr){
+                if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+                else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -520,7 +602,7 @@ public class Data {
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -537,24 +619,24 @@ public class Data {
                     System.exit(0);
                 }
             }
-            else if(dr>uu && dr>ur && dr>ll && dr>rr && dr>dl && dr> dd && dr>ul){
-                if(xD-1>0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
+            else if(ul<=uu && ul<=ur && ul<=ll && ul<=rr && ul<=dl && ul<=dd && ul<=dr){
+                if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(yD-1>0 && charArray[xD][yD-1]=='-'){
+                else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && charArray[xD-1][yD]=='-'){
+                else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                 }
-                else if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
+                else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
                 }
@@ -579,26 +661,7 @@ public class Data {
             
     }
         
-    public LinkedList changedList(){
-        
-        int k=0;
-        for(int i=0; i<x; i++ )
-                    for(int j=0; j<y; j++)
-                        if(charArray[i][j]=='p'){
-                            listPAndD.set(k, i);
-                            k++;
-                            listPAndD.set(k, j);
-                            k++;
-                        }
-        for(int i=0; i<x; i++ )
-                    for(int j=0; j<y; j++)
-                        if(charArray[i][j]=='D'){
-                            listPAndD.set(k, i);
-                            k++;
-                            listPAndD.set(k, j);
-                        }
-        return listPAndD;
-    }
+    
 
     public void setX(int x) {
         this.x = x;
