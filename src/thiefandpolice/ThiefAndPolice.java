@@ -32,10 +32,12 @@ public class ThiefAndPolice {
         police.watch(data.makeMatrix());
         thief.watch(data.makeMatrix());
         
-        data.move(police.watch(data.changedList()), thief.watch(data.changedList()));
-        data.print();
-                
+        while(true){
+            data.move(police.watch(data.changedList()), thief.watch(data.changedList()));
+            data.print();
+        }
     
     }
+    
     
 }
