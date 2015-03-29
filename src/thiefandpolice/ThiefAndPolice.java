@@ -5,6 +5,7 @@
  */
 package thiefandpolice;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 /**
  *
@@ -27,17 +28,25 @@ public class ThiefAndPolice {
         LinkedList listPAndD = data.makeMatrix();
         data.print();
         
-        Police police = new Police(pn, x, y, data.getCharArray());
+        
         Thief thief = new Thief(pn, x, y, data.getCharArray());
 
-        police.watch(listPAndD);
+        //police.watch(listPAndD);
         thief.watch(listPAndD);
         
         System.out.println("*");
+        char c = '\n';
+        int length = 40;
+        char[] chars = new char[length];
+        Arrays.fill(chars, c);
+        System.out.print(String.valueOf(chars));
+        //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         //System.out.println(data.changedList());
         
+        System.out.print("\033[H\033[2J");
+
         while(true){
-            data.move(police.watch(data.changedList()), thief.watch(data.changedList()));
+            data.move(thief.watch(data.changedList()));
             data.print();
         }
     

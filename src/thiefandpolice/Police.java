@@ -51,7 +51,7 @@ public class Police extends Data{
                 }  
         }
         
-        if(k==listPAndD.size()-2-1){
+        if(k==listPAndD.size()-2){
             how[0]=-1;
             how[1]=-1;
         }
