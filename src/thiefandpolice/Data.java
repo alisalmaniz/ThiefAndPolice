@@ -336,22 +336,78 @@ public class Data {
                 xP=(int)listPNearD.get(i);
                 yP=(int)listPNearD.get(i+1);
                 
-                if(xP<xD && yP<yD )
-                    ul++;
-                else if(xP<xD && yP==yD)
-                    uu++;
-                else if(xP<xD && yP>yD)
-                    ur++;
-                else if(xP==xD && yP<yD)
-                    ll++;
-                else if(xP==xD && yP>yD)
+                if(xP<xD && yP<yD ){
+                    ul+=6;
+                    uu+=4;
+                    ll+=4;
+                    ur+=2;
+                    dl+=2;
                     rr++;
-                else if(xP>xD && yP<yD)
-                    dl++;
-                else if(xP>xD && yP==yD)
                     dd++;
-                else if(xP>xD && yP>yD)
+                }
+                else if(xP<xD && yP==yD){
+                    uu+=6;
+                    ul+=4;
+                    ur+=4;
+                    rr+=2;
+                    ll+=2;
                     dr++;
+                    dl++;
+                }
+                else if(xP<xD && yP>yD){
+                    ur+=6;
+                    uu+=4;
+                    rr+=4;
+                    ul+=2;
+                    dr+=2;
+                    ll++;
+                    dd++;
+                }
+                else if(xP==xD && yP<yD){
+                    ll+=6;
+                    ul+=4;
+                    dl+=4;
+                    uu+=2;
+                    dd+=2;
+                    ur++;
+                    dr++;
+                }
+                else if(xP==xD && yP>yD){
+                    rr+=6;
+                    ur+=4;
+                    dr+=4;
+                    uu+=2;
+                    dd+=2;
+                    ul++;
+                    dl++;
+                }
+                else if(xP>xD && yP<yD){
+                    dl+=6;
+                    dd+=4;
+                    ll+=4;
+                    ul+=2;
+                    dr+=2;
+                    rr++;
+                    uu++;
+                }
+                else if(xP>xD && yP==yD){
+                    dd+=6;
+                    dr+=4;
+                    dl+=4;
+                    rr+=2;
+                    ll+=2;
+                    ur++;
+                    ul++;
+                }
+                else if(xP>xD && yP>yD){
+                    dr+=6;
+                    dd+=4;
+                    rr+=4;
+                    ur+=2;
+                    dl+=2;
+                    ll++;
+                    uu++;
+                }
             }
             if(dr<=uu && dr<=ur && dr<=ll && dr<=rr && dr<=dl && dr<=dd && dr<=ul){
                 if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
