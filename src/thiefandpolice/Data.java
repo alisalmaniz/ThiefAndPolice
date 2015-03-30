@@ -5,6 +5,7 @@
  */
 package thiefandpolice;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -19,7 +20,8 @@ public class Data {
     protected int x;
     protected int y;
     protected char [][] charArray;
-    protected LinkedList listPAndD; 
+    protected LinkedList listPAndD;
+    private int PND;
     
     public Data(){
      
@@ -27,12 +29,14 @@ public class Data {
         x = 0;
         y = 0;
         listPAndD =new LinkedList();
+        PND = 0;
     }
     
     public int policeNumbers(){
         
         String pn2 = JOptionPane.showInputDialog("Enter The number of plices");
         pn = Integer.parseInt(pn2);
+        
         return pn;
     }
     
@@ -95,6 +99,25 @@ public class Data {
             System.out.println("");
         }
         System.out.println("");
+        
+    }
+    
+    public void delay(int s){
+        
+        try {
+        Thread.sleep(s);
+        } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();
+        }
+    }
+    
+    public void cls(int l){
+        
+        char c = '\n';
+        int length = l;
+        char[] chars = new char[length];
+        Arrays.fill(chars, c);
+        System.out.print(String.valueOf(chars));
     }
     
     public LinkedList changedList(){
@@ -124,13 +147,10 @@ public class Data {
         return listPAndD;
     }
     
-    public void move( LinkedList listPNearD){
+    public void moveThief( LinkedList listPNearD){
         
         //move of thief
-        
-        System.out.println(listPAndD);
-        System.out.print(listPNearD);
-        System.out.println(listPNearD.size());
+
         
         if(listPNearD.size()==0){
             
@@ -156,6 +176,7 @@ public class Data {
             }
         }
         else{
+            PND=1;
             
             int ul=0;
             int ll=0;
@@ -179,72 +200,72 @@ public class Data {
                 yP=(int)listPNearD.get(i+1);
                 
                 if(xP<xD && yP<yD ){
-                    ul+=6;
-                    uu+=4;
-                    ll+=4;
+                    ul+=7;
+                    uu+=5;
+                    ll+=5;
                     ur+=2;
                     dl+=2;
                     rr++;
                     dd++;
                 }
                 else if(xP<xD && yP==yD){
-                    uu+=6;
-                    ul+=4;
-                    ur+=4;
+                    uu+=7;
+                    ul+=5;
+                    ur+=5;
                     rr+=2;
                     ll+=2;
                     dr++;
                     dl++;
                 }
                 else if(xP<xD && yP>yD){
-                    ur+=6;
-                    uu+=4;
-                    rr+=4;
+                    ur+=7;
+                    uu+=5;
+                    rr+=5;
                     ul+=2;
                     dr+=2;
                     ll++;
                     dd++;
                 }
                 else if(xP==xD && yP<yD){
-                    ll+=6;
-                    ul+=4;
-                    dl+=4;
+                    ll+=7;
+                    ul+=5;
+                    dl+=5;
                     uu+=2;
                     dd+=2;
                     ur++;
                     dr++;
                 }
                 else if(xP==xD && yP>yD){
-                    rr+=6;
-                    ur+=4;
-                    dr+=4;
+                    rr+=7;
+                    ur+=5;
+                    dr+=5;
                     uu+=2;
                     dd+=2;
                     ul++;
                     dl++;
                 }
                 else if(xP>xD && yP<yD){
-                    dl+=6;
-                    dd+=4;
-                    ll+=4;
+                    dl+=7;
+                    dd+=5;
+                    ll+=5;
                     ul+=2;
                     dr+=2;
                     rr++;
                     uu++;
                 }
                 else if(xP>xD && yP==yD){
-                    dd+=6;
-                    dr+=4;
-                    dl+=4;
+                    dd+=7;
+                    dr+=5;
+                    dl+=5;
                     rr+=2;
                     ll+=2;
                     ur++;
                     ul++;
                 }
                 else if(xP>xD && yP>yD){
-                    dr+=6;
-                    dd+=4;
-                    rr+=4;
+                    dr+=7;
+                    dd+=5;
+                    rr+=5;
                     ur+=2;
                     dl+=2;
                     ll++;
@@ -524,13 +545,15 @@ public class Data {
                 }
             }
         }
-        
+    }
+    
+    public void movePolice(int[] how){
         
         // move of polices
-        Police police = new Police(pn, x, y, this.getCharArray());
-        int[] how=police.watch(this.changedList());
+
+
         
-        if(how[0]==-1){
+        if(how[0]==-1 && PND==0){
             
             int i=0;
             int r1;
@@ -583,11 +606,11 @@ public class Data {
                                     charArray[i+1][j]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
+                                else if(j+1<y && charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
                                     }
-                                else if(charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
+                                else if(j-1>=0 && charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
                                     charArray[i+1][j-1]='r';
                                     charArray[i][j]='-';
                                 }
@@ -611,11 +634,11 @@ public class Data {
                                     charArray[i][j+1]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
+                                else if(i+1<x && charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
+                                else if(i-1>=0 && charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
                                     charArray[i-1][j+1]='r';
                                     charArray[i][j]='-';
                                 }
@@ -625,11 +648,11 @@ public class Data {
                                     charArray[i][j-1]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
+                                else if(i+1<x && charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
                                     charArray[i+1][j-1]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
+                                else if(i-1>=0 && charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
                                 }
@@ -648,21 +671,21 @@ public class Data {
                                     charArray[i][j]='-';
                                 }
                             }
-                            else if( i<dx && j==dy ){
+                            else if( i>dx && j==dy ){
                                 if(charArray[i-1][j]!='P' && charArray[i-1][j]!='r' ){
                                     charArray[i-1][j]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
+                                else if(j+1<y && charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
                                     charArray[i-1][j+1]='r';
                                     charArray[i][j]='-';
                                 }
-                                else if(charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
+                                else if(j-1>=0 && charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
                                 }
                             }
-                            else if( i<dx && j>dy ){
+                            else if( i>dx && j>dy ){
                                 if(charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r') {
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
@@ -685,6 +708,9 @@ public class Data {
             
             if(charArray[dx][dy]=='P'){
                 charArray[dx][dy]='*';
+                this.delay(2000);
+                this.print();
+                this.cls(x<37 ? 37-x-1 : 1);
                 System.exit(0);
             }
             

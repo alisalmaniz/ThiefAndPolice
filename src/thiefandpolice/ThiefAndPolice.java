@@ -27,27 +27,20 @@ public class ThiefAndPolice {
         int pn = data.policeNumbers();
         LinkedList listPAndD = data.makeMatrix();
         data.print();
+        data.cls(x<37 ? 37-x : 1);
         
         
         Thief thief = new Thief(pn, x, y, data.getCharArray());
-
-        //police.watch(listPAndD);
         thief.watch(listPAndD);
         
-        System.out.println("*");
-        char c = '\n';
-        int length = 40;
-        char[] chars = new char[length];
-        Arrays.fill(chars, c);
-        System.out.print(String.valueOf(chars));
-        //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        //System.out.println(data.changedList());
-        
-        System.out.print("\033[H\033[2J");
+        Police police = new Police(pn, x, y, data.getCharArray());
 
         while(true){
-            data.move(thief.watch(data.changedList()));
+            data.moveThief(thief.watch(data.changedList()));
+            data.movePolice(police.watch(data.changedList()));
+            data.delay(2000);
             data.print();
+            data.cls(x<37 ? 37-x : 1);
         }
     
     }

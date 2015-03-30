@@ -42,7 +42,24 @@ public class Thief extends Data {
                         listPNearD.add(i);
                         listPNearD.add(j);
                     }
-            }  
+            }
+        
+        if(xElement-2<=0){
+            listPNearD.add(-1);
+            listPNearD.add(yElement);
+        }
+        if(xElement+3>=x){
+            listPNearD.add(x);
+            listPNearD.add(yElement);
+        }
+        if(yElement-2<=0){
+            listPNearD.add(xElement);
+            listPNearD.add(-1);
+        }
+        if(yElement+3>y){
+            listPNearD.add(xElement);
+            listPNearD.add(y);
+        }
 
         return listPNearD;
     }
