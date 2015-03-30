@@ -45,14 +45,14 @@ public class Data {
     
     public int getXElement(){
         
-        String x2 = JOptionPane.showInputDialog("Enter The x element");
+        String x2 = JOptionPane.showInputDialog("Enter The x element (if x<36 you have a fit scroll)");
         x = Integer.parseInt(x2);
         return x;
     }
     
     public int getYElement(){
         
-        String y2 = JOptionPane.showInputDialog("Enter The y element");
+        String y2 = JOptionPane.showInputDialog("Enter The y element (if y<62 you have a fit scroll)");
         y = Integer.parseInt(y2);
         return y;
     }
@@ -101,7 +101,6 @@ public class Data {
               
             System.out.println("");
         }
-        System.out.println("");
         
     }
     
@@ -180,7 +179,6 @@ public class Data {
             }
         }
         else{
-            PND=1;
             
             int ul=0;      //these are directions
             int ll=0;
@@ -331,7 +329,7 @@ public class Data {
                     charArray[xD][yD]='-';
                     nOfThiefMove++;       
                 }
-                else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
+                else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
                     nOfThiefMove++;       
@@ -623,7 +621,7 @@ public class Data {
 
 
         
-        if(how[0]==-1 && PND==0){
+        if(how[0]==-1 ){
             //random move
             int i=0;
             int r1;
@@ -651,8 +649,8 @@ public class Data {
                 }
         }
         else{
-            int dx=(int)listPAndD.get(listPAndD.size()-2);
-            int dy=(int)listPAndD.get(listPAndD.size()-1);            
+            int dx=how[0];//(int)listPAndD.get(listPAndD.size()-2);
+            int dy=how[1];//(int)listPAndD.get(listPAndD.size()-1);            
             for(int k=0; k<Math.max(Math.max(dx, x-1-dx), Math.max(dy, y-1-dy)); k++){
                 //the table will chek more than 1 times
                 
@@ -680,7 +678,7 @@ public class Data {
                                 }
                             }
                             else if( i<dx && j==dy ){
-                                if(charArray[i+1][j]!='P' && charArray[i+1][j]!='P' ){
+                                if(charArray[i+1][j]!='P' && charArray[i+1][j]!='r' ){
                                     charArray[i+1][j]='r';
                                     charArray[i][j]='-';
                                     nOfPolicesfMove++;  
@@ -806,11 +804,13 @@ public class Data {
                             charArray[i][j]='P';
             
             // In the end:
-            if(charArray[dx][dy]=='P'){
-                charArray[dx][dy]='*';
+            
+            if(charArray[(int)listPAndD.get(listPAndD.size()-2)][(int)listPAndD.get(listPAndD.size()-1)]=='P'){
+                charArray[(int)listPAndD.get(listPAndD.size()-2)][(int)listPAndD.get(listPAndD.size()-1)]='*';
                 this.delay(2000);
+                System.out.println("");
                 this.print();
-                this.cls(x<37 ? 35-x-1 : 1);
+                this.cls(x<35 ? 35-x : 0);
                 if(nOfPolicesfMove>1)
                     System.out.println("The numbers of polices move: "+ nOfPolicesfMove);
                 else
