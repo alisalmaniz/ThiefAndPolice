@@ -22,7 +22,8 @@ public class Data {
     protected char [][] charArray;
     protected LinkedList listPAndD;
     private int PND;
-    
+    private int nOfThiefMove;
+    private int nOfPolicesfMove;
     public Data(){
      
         pn = 0;
@@ -30,6 +31,8 @@ public class Data {
         y = 0;
         listPAndD =new LinkedList();
         PND = 0;
+        nOfThiefMove=0;
+        nOfPolicesfMove=0;
     }
     
     public int policeNumbers(){
@@ -171,6 +174,7 @@ public class Data {
 
                     charArray[xD][yD]='-';
                     charArray[xD+r1-1][yD+r2-1]='D';
+                    nOfThiefMove++;
                     break;
                 }
             }
@@ -276,272 +280,336 @@ public class Data {
                 if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 &&charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(dd<=ul && dd<=ur && dd<=ll && dd<=rr && dd<=dl && dd<=uu && dd<=dr){
                 if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(dl<=uu && dl<=ul && dl<=ll && dl<=rr && dl<=ur && dl<=dd && dl<=dr){
                 if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(rr<=uu && rr<=ur && rr<=ul && rr<=ll && rr<=dl && rr<=dd && rr<=dr){
                 if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(ll<=uu && ll<=ur && ll<=rr && ll<=ul && ll<=dl && ll<=dd && ll<=dr){
                 if(yD-1>0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(ur<=uu && ur<=dl && ur<=ll && ur<=rr && ur<=ul && ur<=dd && ur<=dr){
                 if(xD-1>0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(uu<=dd && uu<=ur && uu<=ll && uu<=rr && uu<=dl && uu<=ul && uu<=dr){
                 if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
             else if(ul<=uu && ul<=ur && ul<=ll && ul<=rr && ul<=dl && ul<=dd && ul<=dr){
                 if(xD-1>=0 && yD-1>=0 && charArray[xD-1][yD-1]=='-'){
                     charArray[xD-1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD-1>=0 && charArray[xD][yD-1]=='-'){
                     charArray[xD][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && charArray[xD-1][yD]=='-'){
                     charArray[xD-1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD-1>=0 && charArray[xD+1][yD-1]=='-'){
                     charArray[xD+1][yD-1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD-1>=0 && yD+1<y && charArray[xD-1][yD+1]=='-'){
                     charArray[xD-1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && charArray[xD+1][yD]=='-'){
                     charArray[xD+1][yD]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(yD+1<y && charArray[xD][yD+1]=='-'){
                     charArray[xD][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
                 else if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
+                    nOfThiefMove++;       
                 }
             }
         }
@@ -573,6 +641,7 @@ public class Data {
 
                             charArray[xP+r1-1][yP+r2-1]='P';
                             charArray[xP][yP]='-';
+                            nOfPolicesfMove++;       
                             break;
                         }
                     }
@@ -591,112 +660,136 @@ public class Data {
                                 if( charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;
                                 }
                                 else if(charArray[i+1][j]!='P' && charArray[i+1][j]!='r' ){
                                     charArray[i+1][j]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i][j+1]!='P' && charArray[i][j+1]!='r' ){
                                     charArray[i][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i<dx && j==dy ){
                                 if(charArray[i+1][j]!='P' && charArray[i+1][j]!='P' ){
                                     charArray[i+1][j]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(j+1<y && charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                     }
                                 else if(j-1>=0 && charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
                                     charArray[i+1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i<dx && j>dy ){
                                 if(charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
                                     charArray[i+1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i+1][j]!='P' && charArray[i+1][j]!='r' ){
                                     charArray[i+1][j]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i][j-1]!='P' && charArray[i][j-1]!='r' ){
                                     charArray[i][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i==dx && j<dy ){
                                 if(charArray[i][j+1]!='P' && charArray[i][j+1]!='r' ){
                                     charArray[i][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(i+1<x && charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(i-1>=0 && charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
                                     charArray[i-1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i==dx && j>dy ){
                                 if(charArray[i][j-1]!='P' && charArray[i][j-1]!='r' ){
                                     charArray[i][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(i+1<x && charArray[i+1][j-1]!='P' && charArray[i+1][j-1]!='r' ){
                                     charArray[i+1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(i-1>=0 && charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i>dx && j<dy ){
                                 if(charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
                                     charArray[i-1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i][j+1]!='P' && charArray[i][j+1]!='r'){
                                     charArray[i][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i-1][j]!='P' && charArray[i-1][j]!='r'){
                                     charArray[i-1][j]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i>dx && j==dy ){
                                 if(charArray[i-1][j]!='P' && charArray[i-1][j]!='r' ){
                                     charArray[i-1][j]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(j+1<y && charArray[i-1][j+1]!='P' && charArray[i-1][j+1]!='r' ){
                                     charArray[i-1][j+1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(j-1>=0 && charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                             else if( i>dx && j>dy ){
                                 if(charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r') {
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i][j-1]!='P' && charArray[i][j-1]!='r' ){
                                     charArray[i][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                                 else if(charArray[i-1][j-1]!='P' && charArray[i-1][j-1]!='r' ){
                                     charArray[i-1][j-1]='r';
                                     charArray[i][j]='-';
+                                    nOfPolicesfMove++;  
                                 }
                             }
                         }
@@ -710,7 +803,16 @@ public class Data {
                 charArray[dx][dy]='*';
                 this.delay(2000);
                 this.print();
-                this.cls(x<37 ? 37-x-1 : 1);
+                this.cls(x<37 ? 35-x-1 : 1);
+                if(nOfPolicesfMove>1)
+                    System.out.println("The numbers of polices move: "+ nOfPolicesfMove);
+                else
+                    System.out.println("The number of police move: "+ nOfPolicesfMove);
+                if(nOfThiefMove>1)
+                    System.out.println("The numbers of thief move: "+ nOfThiefMove);
+                else
+                    System.out.println("The number of thief move: "+ nOfThiefMove);
+                
                 System.exit(0);
             }
             
