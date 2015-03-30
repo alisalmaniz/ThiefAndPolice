@@ -156,7 +156,7 @@ public class Data {
 
         
         if(listPNearD.size()==0){
-            
+            // random move
             int i=0;
             int r1;
             int r2;
@@ -182,7 +182,7 @@ public class Data {
         else{
             PND=1;
             
-            int ul=0;
+            int ul=0;      //these are directions
             int ll=0;
             int dl=0;
             int uu=0;
@@ -203,8 +203,8 @@ public class Data {
                 xP=(int)listPNearD.get(i);
                 yP=(int)listPNearD.get(i+1);
                 
-                if(xP<xD && yP<yD ){
-                    ul+=7;
+                if(xP<xD && yP<yD ){  
+                    ul+=7;           //levels of danger
                     uu+=5;
                     ll+=5;
                     ur+=2;
@@ -277,6 +277,8 @@ public class Data {
                 }
             }
             if(dr<=uu && dr<=ur && dr<=ll && dr<=rr && dr<=dl && dr<=dd && dr<=ul){
+                //shows that dr is safer than other directions
+                // but some times cant move in this direction
                 if(xD+1<x && yD+1<y && charArray[xD+1][yD+1]=='-'){
                     charArray[xD+1][yD+1]='D';
                     charArray[xD][yD]='-';
@@ -622,7 +624,7 @@ public class Data {
 
         
         if(how[0]==-1 && PND==0){
-            
+            //random move
             int i=0;
             int r1;
             int r2;
@@ -652,11 +654,15 @@ public class Data {
             int dx=(int)listPAndD.get(listPAndD.size()-2);
             int dy=(int)listPAndD.get(listPAndD.size()-1);            
             for(int k=0; k<Math.max(Math.max(dx, x-1-dx), Math.max(dy, y-1-dy)); k++){
+                //the table will chek more than 1 times
+                
                 for(int i=0; i<x; i++ )
                     for(int j=0; j<y; j++)
                         if(charArray[i][j]=='P'){
 
                             if( i<dx && j<dy ){
+                                //the movement changes in the effect of P and D position
+                                //every psition has three way of move
                                 if( charArray[i+1][j+1]!='P' && charArray[i+1][j+1]!='r' ){
                                     charArray[i+1][j+1]='r';
                                     charArray[i][j]='-';
@@ -799,6 +805,7 @@ public class Data {
                         if(charArray[i][j]=='r')
                             charArray[i][j]='P';
             
+            // In the end:
             if(charArray[dx][dy]=='P'){
                 charArray[dx][dy]='*';
                 this.delay(2000);
@@ -861,4 +868,37 @@ public class Data {
     public LinkedList getList() {
         return listPAndD;
     }
+
+    public int getPND() {
+        return PND;
+    }
+
+    public void setPND(int PND) {
+        this.PND = PND;
+    }
+
+    public LinkedList getListPAndD() {
+        return listPAndD;
+    }
+
+    public void setListPAndD(LinkedList listPAndD) {
+        this.listPAndD = listPAndD;
+    }
+
+    public void setnOfPolicesfMove(int nOfPolicesfMove) {
+        this.nOfPolicesfMove = nOfPolicesfMove;
+    }
+
+    public int getnOfPolicesfMove() {
+        return nOfPolicesfMove;
+    }
+
+    public void setnOfThiefMove(int nOfThiefMove) {
+        this.nOfThiefMove = nOfThiefMove;
+    }
+
+    public int getnOfThiefMove() {
+        return nOfThiefMove;
+    }
+       
 }

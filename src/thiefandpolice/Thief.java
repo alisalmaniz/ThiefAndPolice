@@ -26,6 +26,8 @@ public class Thief extends Data {
     // public void p(){System.out.println(pn);}
     public LinkedList watch(LinkedList listPAndD){
         
+        // to recognize near polices
+        
         listPNearD = new LinkedList();
         int i=0;
         int j=0;
@@ -44,6 +46,8 @@ public class Thief extends Data {
                     }
             }
         
+        // the walls is the same as police!!!
+        
         if(xElement-2<=0){
             listPNearD.add(-1);
             listPNearD.add(yElement);
@@ -61,6 +65,22 @@ public class Thief extends Data {
             listPNearD.add(y);
         }
 
+        return listPNearD;
+    }
+
+    public void setListPAndD(LinkedList listPAndD) {
+        this.listPAndD = listPAndD;
+    }
+
+    public LinkedList getListPAndD() {
+        return listPAndD;
+    }
+
+    public void setListPNearD(LinkedList listPNearD) {
+        this.listPNearD = listPNearD;
+    }
+
+    public LinkedList getListPNearD() {
         return listPNearD;
     }
     

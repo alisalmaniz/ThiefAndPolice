@@ -15,8 +15,8 @@ import java.util.Random;
 public class Police extends Data{
     
     private int[] how;
-    private int xElement;
-    private int yElement;
+    private int xElement; //element of D
+    private int yElement; //element of D
     
     public Police(int pn, int x, int y , char[][] charArray){
     
@@ -24,13 +24,15 @@ public class Police extends Data{
         this.x = x;
         this.y = y; 
         this.charArray = charArray;
-        how = new int[2];
+        how = new int[2]; // keeps thief position
         xElement=0;
         yElement=0;
  
     }
     //public void p(){System.out.println(pn);}
     public int[] watch(LinkedList listPAndD){
+        
+        //to recognize near thief
 
         int i=0;
         int j=0;
@@ -62,6 +64,29 @@ public class Police extends Data{
         
         return how;
     }
-    
 
+    public void setHow(int[] how) {
+        this.how = how;
+    }
+
+    public int[] getHow() {
+        return how;
+    }
+
+    public void setyElement(int yElement) {
+        this.yElement = yElement;
+    }
+
+    public int getyElement() {
+        return yElement;
+    }
+
+    public void setxElement(int xElement) {
+        this.xElement = xElement;
+    }
+
+    public int getxElement() {
+        return xElement;
+    }
+   
 }
